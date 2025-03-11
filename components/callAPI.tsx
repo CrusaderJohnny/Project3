@@ -1,6 +1,6 @@
 import { Picker } from '@react-native-picker/picker';
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet, Platform } from 'react-native';
 
 const NumberFact = () => {
   const [month, setMonth] = useState(1);
@@ -57,8 +57,8 @@ const NumberFact = () => {
             const result = await response.json();
             setFact(result.text);
             setIsLoading(false);
-          } catch (err) {
-            setError(err);
+          } catch (error) {
+            setError(error);
             setIsLoading(false);
           }
         }, 500); // 500ms delay
@@ -138,14 +138,25 @@ const NumberFact = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column', 
-    alignItems: 'center', 
-    justifyContent: 'flex-start'
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   picker: {
     width: '80%',
     marginBottom: 10,
     padding: 10,
+    ...Platform.select({
+      ios: {
+        // iOS specific styles
+        borderColor: 'grey',
+        borderWidth: 1,
+      },
+      android: {
+        // Android specific styles
+        backgroundColor: '#f8f8f8',
+      },
+    }),
   },
   loading: {
     marginTop: 20,
