@@ -138,26 +138,26 @@ const NumberFact = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 20,
+    flexDirection: 'column', 
+    alignItems: 'center', 
+    justifyContent: 'flex-start'
   },
   picker: {
-    height: 50,
-    width: '100%',
+    width: '80%',
+    marginBottom: 10,
+    padding: 10,
   },
   loading: {
     marginTop: 20,
-    alignItems: 'center',
   },
   error: {
     marginTop: 20,
-    alignItems: 'center',
-    color: 'red'
   },
   fact: {
     marginTop: 20,
-    alignItems: 'center',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
 });
 
